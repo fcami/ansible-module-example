@@ -1,0 +1,30 @@
+---
+# tasks file for chrony-role
+#
+
+- name: install chrony
+  yum:
+    name: chrony
+    state: latest
+
+#- name: install chrony conf
+#  copy:
+#    src: chrony.conf
+#    dest: /etc/chrony.conf
+#    owner: root
+#    group: root
+#    mode: u+rw,g-wx,o-wx
+
+- template:
+    src: chrony.j2
+    dest: /etc/chrony.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: start/enable chrony
+  systemd:
+    state: restarted
+    daemon_reload: yes
+    name: chronyd
+

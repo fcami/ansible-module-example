@@ -1,0 +1,6 @@
+---
+# defaults file for chrony-role
+
+
+pool_address: 2.fedora.pool.ntp.org
+chrony_clients: 192.168.0.0/16
